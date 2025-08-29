@@ -67,42 +67,14 @@ const EditingCanvas: React.FC<EditingCanvasProps> = ({
     }
   }, [activeTab, onHotspotPress, image, imageLayout]);
 
-  const pinchGestureHandler = useAnimatedGestureHandler({
-    onStart: () => {},
-    onActive: (event) => {
-      scale.value = Math.max(0.5, Math.min(event.scale || 1, 3));
-    },
-    onEnd: () => {
-      if (scale.value < 1) {
-        scale.value = withSpring(1);
-      }
-      if (scale.value > 2) {
-        scale.value = withSpring(2);
-      }
-    },
-  });
-
-  const panGestureHandler = useAnimatedGestureHandler({
-    onStart: () => {},
-    onActive: (event) => {
-      if (scale.value > 1) {
-        translateX.value = event.translationX || 0;
-        translateY.value = event.translationY || 0;
-      }
-    },
-    onEnd: () => {
-      // Constrain translation to keep image in bounds
-      const maxTranslateX = (screenWidth * (scale.value - 1)) / 2;
-      const maxTranslateY = (screenHeight * (scale.value - 1)) / 2;
-      
-      translateX.value = withSpring(
-        Math.max(-maxTranslateX, Math.min(maxTranslateX, translateX.value))
-      );
-      translateY.value = withSpring(
-        Math.max(-maxTranslateY, Math.min(maxTranslateY, translateY.value))
-      );
-    },
-  });
+  // Simplified gesture handling for now
+  const handleDoubleTap = () => {
+    if (scale.value > 1) {
+      resetTransform();
+    } else {
+      scale.value = withSpring(2);
+    }
+  };
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
