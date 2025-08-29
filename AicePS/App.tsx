@@ -34,6 +34,14 @@ export default function App() {
     setActiveView('start');
   };
 
+  const handleNavigateToEditor = () => {
+    setActiveView('editor');
+  };
+
+  const handleNavigateToPastForward = () => {
+    setActiveView('past-forward');
+  };
+
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.container}>
