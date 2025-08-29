@@ -6,10 +6,12 @@ import {
   Dimensions,
   TouchableOpacity,
   Text,
+} from 'react-native';
+import {
   PanGestureHandler,
   PinchGestureHandler,
   State,
-} from 'react-native';
+} from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
