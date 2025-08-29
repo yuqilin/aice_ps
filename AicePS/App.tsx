@@ -1,20 +1,64 @@
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+import StartScreen from './src/screens/StartScreen';
+import EditorScreen from './src/screens/EditorScreen';
+import { ImageAsset, View as ViewType } from './src/types';
 
 export default function App() {
+  const [activeView, setActiveView] = useState<ViewType>('start');
+  const [currentImage, setCurrentImage] = useState<ImageAsset | null>(null);
+
+  const handleImageSelected = (image: ImageAsset) => {
+    setCurrentImage(image);
+    setActiveView('editor');
+  };
+
+  const handleImageGenerated = (imageUri: string) => {
+    const generatedImage: ImageAsset = {
+      uri: imageUri,
+      width: 512, // Default dimensions for generated images
+      height: 512,
+      type: 'image/png',
+      name: `generated-${Date.now()}.png`,
+    };
+    setCurrentImage(generatedImage);
+    setActiveView('editor');
+  };
+
+  const handleBackToStart = () => {
+    setCurrentImage(null);
+    setActiveView('start');
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <GestureHandlerRootView style={styles.container}>
+      <View style={styles.container}>
+        <StatusBar style="light" backgroundColor="#090A0F" />
+        
+        {activeView === 'start' && (
+          <StartScreen
+            onImageSelected={handleImageSelected}
+            onImageGenerated={handleImageGenerated}
+          />
+        )}
+        
+        {activeView === 'editor' && currentImage && (
+          <EditorScreen
+            image={currentImage}
+            onBack={handleBackToStart}
+          />
+        )}
+      </View>
+    </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#090A0F',
   },
 });
