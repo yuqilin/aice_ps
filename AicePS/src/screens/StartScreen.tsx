@@ -74,7 +74,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onImageSelected, onImageGener
           width: asset.width || 0,
           height: asset.height || 0,
           type: asset.type,
-          name: asset.fileName,
+          name: asset.fileName || 'image.jpg',
         });
       }
     } catch (error) {
@@ -102,7 +102,7 @@ const StartScreen: React.FC<StartScreenProps> = ({ onImageSelected, onImageGener
           width: asset.width || 0,
           height: asset.height || 0,
           type: asset.type,
-          name: asset.fileName,
+          name: asset.fileName || 'camera.jpg',
         });
       }
     } catch (error) {
