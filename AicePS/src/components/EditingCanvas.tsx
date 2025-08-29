@@ -77,7 +77,7 @@ const EditingCanvas: React.FC<EditingCanvasProps> = ({
   const pinchGestureHandler = useAnimatedGestureHandler({
     onStart: () => {},
     onActive: (event) => {
-      scale.value = Math.max(0.5, Math.min(event.nativeEvent.scale, 3));
+      scale.value = Math.max(0.5, Math.min(event.scale || 1, 3));
     },
     onEnd: () => {
       if (scale.value < 1) {
@@ -93,8 +93,8 @@ const EditingCanvas: React.FC<EditingCanvasProps> = ({
     onStart: () => {},
     onActive: (event) => {
       if (scale.value > 1) {
-        translateX.value = event.nativeEvent.translationX;
-        translateY.value = event.nativeEvent.translationY;
+        translateX.value = event.translationX || 0;
+        translateY.value = event.translationY || 0;
       }
     },
     onEnd: () => {
