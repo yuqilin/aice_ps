@@ -7,17 +7,10 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import {
-  PanGestureHandler,
-  PinchGestureHandler,
-  State,
-} from 'react-native-gesture-handler';
 import Animated, {
-  useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  runOnJS,
 } from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
 import { ImageAsset, RetouchHotspot } from '../types';
