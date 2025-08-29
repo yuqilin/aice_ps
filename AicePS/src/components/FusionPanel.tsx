@@ -56,7 +56,7 @@ const FusionPanel: React.FC<FusionPanelProps> = ({
           width: asset.width || 0,
           height: asset.height || 0,
           type: asset.type,
-          name: asset.fileName,
+          name: asset.fileName || 'fusion.jpg',
         };
         setSourceImages([...sourceImages, newImage]);
       }
