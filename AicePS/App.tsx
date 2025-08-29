@@ -51,12 +51,19 @@ export default function App() {
           <StartScreen
             onImageSelected={handleImageSelected}
             onImageGenerated={handleImageGenerated}
+            onNavigateToPastForward={handleNavigateToPastForward}
           />
         )}
         
         {activeView === 'editor' && currentImage && (
           <EditorScreen
             image={currentImage}
+            onBack={handleBackToStart}
+          />
+        )}
+        
+        {activeView === 'past-forward' && (
+          <PastForwardScreen
             onBack={handleBackToStart}
           />
         )}
