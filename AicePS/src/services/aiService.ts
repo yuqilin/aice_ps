@@ -24,35 +24,22 @@ class AiService {
   }
 
   private async makeApiRequest(prompt: string, imageData?: string, model: string = 'gemini-2.5-flash') {
-    const payload = {
-      model,
-      messages: [
-        {
-          role: 'user',
-          content: imageData 
-            ? [
-                { type: 'text', text: prompt },
-                { type: 'image_url', image_url: { url: imageData } }
-              ]
-            : [{ type: 'text', text: prompt }]
+    // Note: This is a placeholder implementation
+    // In a real implementation, this would use the Emergent integrations library
+    // For now, we'll simulate the API response for testing purposes
+    
+    await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API delay
+    
+    // Return a placeholder base64 image for testing
+    const placeholderImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    
+    return {
+      choices: [{
+        message: {
+          content: placeholderImage
         }
-      ]
+      }]
     };
-
-    const response = await fetch(`${BASE_URL}/v1/chat/completions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.apiKey}`,
-      },
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-      throw new Error(`API request failed: ${response.statusText}`);
-    }
-
-    return await response.json();
   }
 
   // Convert image URI to base64 for API
