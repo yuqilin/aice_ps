@@ -50,7 +50,7 @@ const EditorScreen: React.FC<EditorScreenProps> = ({ image, onBack }) => {
   const [cropData, setCropData] = useState<any>(null);
 
   const tabs = [
-    { key: 'adjust' as EditTab, name: '调整', icon: 'tune', color: '#F59E0B' },
+    { key: 'adjust' as EditTab, name: '调整', icon: 'options', color: '#F59E0B' },
     { key: 'filters' as EditTab, name: '滤镜', icon: 'color-filter', color: '#8B5CF6' },
     { key: 'texture' as EditTab, name: '纹理', icon: 'layers', color: '#10B981' },
     { key: 'erase' as EditTab, name: '抠图', icon: 'cut', color: '#F97316' },

@@ -76,7 +76,7 @@ const ErasePanel: React.FC<ErasePanelProps> = ({
               </>
             ) : (
               <>
-                <Ionicons name="scissors" size={20} color="white" />
+                <Ionicons name="cut" size={20} color="white" />
                 <Text style={styles.buttonText}>开始抠图</Text>
               </>
             )}

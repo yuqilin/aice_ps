@@ -72,7 +72,7 @@ const AdjustmentPanel: React.FC<AdjustmentPanelProps> = ({
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
-          <Ionicons name="tune" size={24} color="#F59E0B" />
+          <Ionicons name="options" size={24} color="#F59E0B" />
           <Text style={styles.title}>图像调整</Text>
         </View>
 
