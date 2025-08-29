@@ -5,6 +5,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import StartScreen from './src/screens/StartScreen';
 import EditorScreen from './src/screens/EditorScreen';
+import PastForwardScreen from './src/screens/PastForwardScreen';
 import { ImageAsset, View as ViewType } from './src/types';
 
 export default function App() {
