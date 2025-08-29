@@ -2,7 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ImageAsset, FilterSuggestion } from '../types';
 
 const EMERGENT_LLM_KEY = 'sk-emergent-b86A1C06a4aEb241fA';
-const BASE_URL = 'https://api.emergent.ai'; // This will need to be the correct Emergent API endpoint
+// Note: This is a placeholder implementation for the Emergent API
+// The actual API integration would require the proper Emergent endpoints
 
 class AiService {
   private apiKey: string = EMERGENT_LLM_KEY;
