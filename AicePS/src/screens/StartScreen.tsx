@@ -24,7 +24,7 @@ interface StartScreenProps {
   onNavigateToPastForward?: () => void;
 }
 
-const StartScreen: React.FC<StartScreenProps> = ({ onImageSelected, onImageGenerated }) => {
+const StartScreen: React.FC<StartScreenProps> = ({ onImageSelected, onImageGenerated, onNavigateToPastForward }) => {
   const [generationPrompt, setGenerationPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<'1:1' | '16:9' | '9:16' | '4:3' | '3:4'>('1:1');
