@@ -99,41 +99,35 @@ const EditingCanvas: React.FC<EditingCanvasProps> = ({
           </View>
         )}
 
-        <PinchGestureHandler onGestureEvent={pinchGestureHandler}>
-          <Animated.View style={[StyleSheet.absoluteFill]}>
-            <PanGestureHandler onGestureEvent={panGestureHandler}>
-              <Animated.View style={[styles.gestureContainer, animatedStyle]}>
-                <TouchableOpacity
-                  activeOpacity={1}
-                  onPress={handleImagePress}
-                  onLayout={onImageLayout}
-                  style={styles.imageTouchable}
-                >
-                  <Image
-                    source={{ uri: displayImage.uri }}
-                    style={styles.image}
-                    resizeMode="contain"
-                  />
-                  
-                  {/* Retouch hotspot indicator */}
-                  {retouchHotspot && activeTab === 'retouch' && (
-                    <View
-                      style={[
-                        styles.hotspot,
-                        {
-                          left: (retouchHotspot.x / image.width) * imageLayout.width - 12,
-                          top: (retouchHotspot.y / image.height) * imageLayout.height - 12,
-                        },
-                      ]}
-                    >
-                      <Ionicons name="radio-button-on" size={24} color="#3B82F6" />
-                    </View>
-                  )}
-                </TouchableOpacity>
-              </Animated.View>
-            </PanGestureHandler>
-          </Animated.View>
-        </PinchGestureHandler>
+        <Animated.View style={[styles.gestureContainer, animatedStyle]}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={handleImagePress}
+            onLayout={onImageLayout}
+            style={styles.imageTouchable}
+          >
+            <Image
+              source={{ uri: displayImage.uri }}
+              style={styles.image}
+              resizeMode="contain"
+            />
+            
+            {/* Retouch hotspot indicator */}
+            {retouchHotspot && activeTab === 'retouch' && (
+              <View
+                style={[
+                  styles.hotspot,
+                  {
+                    left: (retouchHotspot.x / image.width) * imageLayout.width - 12,
+                    top: (retouchHotspot.y / image.height) * imageLayout.height - 12,
+                  },
+                ]}
+              >
+                <Ionicons name="radio-button-on" size={24} color="#3B82F6" />
+              </View>
+            )}
+          </TouchableOpacity>
+        </Animated.View>
 
         {/* Comparison indicator */}
         {showComparison && (
