@@ -348,11 +348,8 @@ const EditorScreen: React.FC<EditorScreenProps> = ({ image, onBack }) => {
         </TouchableOpacity>
         
         <TouchableOpacity
-          onMouseDown={() => setIsComparing(true)}
-          onMouseUp={() => setIsComparing(false)}
-          onMouseLeave={() => setIsComparing(false)}
-          onTouchStart={() => setIsComparing(true)}
-          onTouchEnd={() => setIsComparing(false)}
+          onPressIn={() => setIsComparing(true)}
+          onPressOut={() => setIsComparing(false)}
           disabled={isLoading || history.length < 2}
           style={[styles.actionButton, (isLoading || history.length < 2) && styles.disabledButton]}
         >
