@@ -74,29 +74,27 @@ const EditorScreen: React.FC<EditorScreenProps> = ({ image, onBack }) => {
   }, [image]);
 
   // Handle back button
-  useFocusEffect(
-    useCallback(() => {
-      const onBackPress = () => {
-        if (historyIndex > 0) {
-          Alert.alert(
-            '确认退出',
-            '您有未保存的编辑，确定要退出吗？',
-            [
-              { text: '取消', style: 'cancel' },
-              { text: '退出', style: 'destructive', onPress: onBack },
-            ]
-          );
-          return true;
-        } else {
-          onBack();
-          return true;
-        }
-      };
+  useEffect(() => {
+    const onBackPress = () => {
+      if (historyIndex > 0) {
+        Alert.alert(
+          '确认退出',
+          '您有未保存的编辑，确定要退出吗？',
+          [
+            { text: '取消', style: 'cancel' },
+            { text: '退出', style: 'destructive', onPress: onBack },
+          ]
+        );
+        return true;
+      } else {
+        onBack();
+        return true;
+      }
+    };
 
-      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
-      return () => subscription.remove();
-    }, [historyIndex, onBack])
-  );
+    const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+    return () => subscription.remove();
+  }, [historyIndex, onBack]);
 
   const updateHistory = (newUri: string, operation: string) => {
     const newHistory: EditHistory = {
