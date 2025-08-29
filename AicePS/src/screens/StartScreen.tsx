@@ -242,6 +242,18 @@ const StartScreen: React.FC<StartScreenProps> = ({ onImageSelected, onImageGener
               <Text style={styles.buttonText}>拍照编辑</Text>
             </LinearGradient>
           </TouchableOpacity>
+
+          {onNavigateToPastForward && (
+            <TouchableOpacity style={styles.actionButton} onPress={onNavigateToPastForward}>
+              <LinearGradient
+                colors={['#FBBF24', '#F59E0B']}
+                style={styles.gradientButton}
+              >
+                <Ionicons name="time" size={20} color="white" />
+                <Text style={styles.buttonText}>Past Forward</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          )}
         </View>
       </ScrollView>
     </LinearGradient>
