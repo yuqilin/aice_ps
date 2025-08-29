@@ -21,6 +21,7 @@ const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 interface StartScreenProps {
   onImageSelected: (image: ImageAsset) => void;
   onImageGenerated: (imageUri: string) => void;
+  onNavigateToPastForward?: () => void;
 }
 
 const StartScreen: React.FC<StartScreenProps> = ({ onImageSelected, onImageGenerated }) => {
