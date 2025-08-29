@@ -61,7 +61,7 @@ const PastForwardScreen: React.FC<PastForwardScreenProps> = ({ onBack }) => {
           width: asset.width || 0,
           height: asset.height || 0,
           type: asset.type,
-          name: asset.fileName,
+          name: asset.fileName || 'image.jpg',
         });
         setResults([]);
       }
@@ -92,7 +92,7 @@ const PastForwardScreen: React.FC<PastForwardScreenProps> = ({ onBack }) => {
           width: asset.width || 0,
           height: asset.height || 0,
           type: asset.type,
-          name: asset.fileName,
+          name: asset.fileName || 'camera.jpg',
         });
         setResults([]);
       }
